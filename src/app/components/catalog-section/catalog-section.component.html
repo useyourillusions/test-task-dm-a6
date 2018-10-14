@@ -17,6 +17,7 @@
             *ngFor="let page of pagesList">
           <a href="#"
              class="l-pagination__link"
+             [class._disabled]="page > pagesQty"
              (click)="changePage($event, page)">{{page}}</a>
         </li>
         <li class="l-pagination__item"

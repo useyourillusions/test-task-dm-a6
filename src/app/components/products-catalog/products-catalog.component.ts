@@ -1,21 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BagService } from "../../services/bag/bag.service";
+import { Component, Input } from '@angular/core';
+import { BagService } from '../../services/bag/bag.service';
 
 @Component({
   selector: 'app-products-catalog',
   templateUrl: './products-catalog.component.html'
 })
-export class ProductsCatalogComponent implements OnInit {
+export class ProductsCatalogComponent {
+
+  @Input() products;
 
   constructor(
     private bagService: BagService
   ) {}
-
-  @Input() products;
-
-  ngOnInit() {
-    console.log(this.products);
-  }
 
   addToBag(product) {
     const productClone = Object.assign({}, product);

@@ -39,7 +39,6 @@ export class CatalogSectionComponent implements OnInit {
     this.http.get('https://api.myjson.com/bins/1g2o7w')
       .subscribe(
         res => {
-          console.log(res);
           if (res && res['results']) {
             this.productsQty = res['results'].length;
             this.allProducts = res['results'];
@@ -57,15 +56,13 @@ export class CatalogSectionComponent implements OnInit {
     if (this.currentPage > this.pagesQty) {
       this.router.navigate(['/products'], {queryParams: {page: this.pagesQty}});
     } else {
-      const counter = Math.floor((this.currentPage - 1) / 5);
-      for (let i = 0; i < 5; i++) {
-        this.pagesList.push(counter * 5 + i + 1);
+      const counter = Math.floor((this.currentPage - 1) / 4);
+      for (let i = 0; i < 4; i++) {
+        this.pagesList.push(counter * 4 + i + 1);
       }
 
       this.productsToShow = this.allProducts.slice((this.currentPage - 1) * 6, this.currentPage * 6);
       // window.scrollTo(0, 0);
-      console.log(this.allProducts, this.productsToShow);
-      console.log('paginate - pages', this.pagesQty);
     }
   }
 
