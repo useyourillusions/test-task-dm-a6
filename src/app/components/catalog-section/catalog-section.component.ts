@@ -26,8 +26,6 @@ export class CatalogSectionComponent implements OnInit {
         this.currentPage = Math.abs(params['page']) || null;
 
         if (this.currentPage && Number(this.currentPage)) {
-          //this.initialQuery = '?page[number]=' + this.currentPage + '&page[productsPerPage]=' + this.productsPerPage;
-          //this.initialFetch();
           this.allProducts && this.paginate();
         } else {
           this.router.navigate(['/products'], {queryParams: {page: 1}});
@@ -62,7 +60,6 @@ export class CatalogSectionComponent implements OnInit {
       }
 
       this.productsToShow = this.allProducts.slice((this.currentPage - 1) * 6, this.currentPage * 6);
-      // window.scrollTo(0, 0);
     }
   }
 

@@ -1,4 +1,4 @@
-<section class="s-products">
+<section class="s-products" *ngIf="productsToShow; else preloader">
   <div class="container">
     <app-products-catalog [products]="productsToShow"></app-products-catalog>
     <div class="b-pagination">
@@ -33,3 +33,9 @@
     </div>
   </div>
 </section>
+
+<ng-template #preloader>
+  <div class="b-preloader">
+    <div class="b-preloader__item"></div>
+  </div>
+</ng-template>
