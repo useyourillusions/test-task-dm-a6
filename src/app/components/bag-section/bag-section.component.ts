@@ -25,7 +25,8 @@ export class BagSectionComponent implements OnInit, OnDestroy {
             const productPrice = el['product']['productPrice'] * el['quantity'];
 
             o['subtotal'] += productPrice;
-            o['gst'] += Number((productPrice * 0.05).toFixed(2));
+            o['gst'] += (productPrice * 0.05);
+            o['gst'] = Number(o['gst'].toFixed(2));
             o['total'] = o['subtotal'] + o['gst'];
 
             return o;

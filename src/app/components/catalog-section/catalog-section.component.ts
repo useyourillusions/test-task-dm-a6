@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import Product from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-catalog-section',
@@ -14,7 +15,7 @@ export class CatalogSectionComponent implements OnInit {
   pagesList = [];
   productsPerPage = 6;
   productsToShow;
-  allProducts;
+  allProducts: Array<Product>;
 
   constructor(
     private http: HttpClient,

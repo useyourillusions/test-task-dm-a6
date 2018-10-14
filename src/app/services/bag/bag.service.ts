@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-interface ProductsInBag {
-  product: object,
-  quantity: number
-}
+import Product from '../../interfaces/product.interface';
+import ProductInBag from '../../interfaces/product-in-bag.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class BagService {
+
   productsQty = 0;
-  productsInBag: ProductsInBag[] = [];
+  productsInBag: Array<ProductInBag> = [];
 
   private productsQtySource = new BehaviorSubject<number>(this.productsQty);
-  private productsInBagSource = new BehaviorSubject<Array<object>>(this.productsInBag);
+  private productsInBagSource = new BehaviorSubject<Array<ProductInBag>>(this.productsInBag);
   productsQtyObs = this.productsQtySource.asObservable();
   productsInBagObs = this.productsInBagSource.asObservable();
 
-  addProduct(product) {
+  addProduct(product: Product) {
     let isAlreadyIn = false,
       productsInBagClone;
 
