@@ -40,12 +40,10 @@ export class CatalogSectionComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          if (res) {
-            if (res['results']) {
-              this.productsQty = res['results'].length;
-              this.allProducts = res['results'];
-              this.paginate();
-            }
+          if (res && res['results']) {
+            this.productsQty = res['results'].length;
+            this.allProducts = res['results'];
+            this.paginate();
           }
         },
         err => console.log(err)

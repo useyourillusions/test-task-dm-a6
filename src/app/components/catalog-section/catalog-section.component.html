@@ -1,30 +1,34 @@
 <section class="s-products">
   <div class="container">
-
     <app-products-catalog [products]="productsToShow"></app-products-catalog>
-
-    <ul class="l-pagination">
-      <li class="l-pagination__item">
-        <a href="#"
-           class="l-pagination__link"
-           *ngIf="pagesList[0] - 1 > 0"
-           (click)="changePage($event, pagesList[0] - 1)">...</a>
-      </li>
-
-      <li class="l-pagination__item"
-          [class._active]="currentPage == page"
-          *ngFor="let page of pagesList">
-        <a href="#"
-           class="l-pagination__link"
-           (click)="changePage($event, page)">{{page}}</a>
-      </li>
-
-      <li class="l-pagination__item">
-        <a href="#"
-           class="l-pagination__link"
-           *ngIf="pagesList.indexOf(pagesQty) < 0"
-           (click)="changePage($event, pagesList.pop() + 1)">...</a>
-      </li>
-    </ul>
+    <div class="b-pagination">
+      <a href="#"
+         class="b-pagination__link"
+         (click)="changePage($event, 1)">First</a>
+      <ul class="l-pagination">
+        <li class="l-pagination__item"
+            *ngIf="pagesList[0] - 1 > 0">
+          <a href="#"
+             class="l-pagination__link"
+             (click)="changePage($event, pagesList[0] - 1)">...</a>
+        </li>
+        <li class="l-pagination__item"
+            [class._active]="currentPage == page"
+            *ngFor="let page of pagesList">
+          <a href="#"
+             class="l-pagination__link"
+             (click)="changePage($event, page)">{{page}}</a>
+        </li>
+        <li class="l-pagination__item"
+            *ngIf="pagesList.indexOf(pagesQty) < 0">
+          <a href="#"
+             class="l-pagination__link"
+             (click)="changePage($event, pagesList.pop() + 1)">...</a>
+        </li>
+      </ul>
+      <a href="#"
+         class="b-pagination__link"
+         (click)="changePage($event, pagesQty)">Last</a>
+    </div>
   </div>
 </section>

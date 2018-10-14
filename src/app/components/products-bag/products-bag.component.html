@@ -1,4 +1,4 @@
-<ul class="l-bag-items" *ngIf="(bagService.productsInBagObs | async).length">
+<ul class="l-bag-items" *ngIf="(bagService.productsInBagObs | async).length; else empty">
   <li class="l-bag-items__item" *ngFor="let product of this.bagService.productsInBagObs | async">
     <picture class="l-bag-items__img-wrapper">
       <source media="(min-resolution: 144dpi)"
@@ -25,3 +25,9 @@
     </div>
   </li>
 </ul>
+
+<ng-template #empty>
+  <div class="s-bag__main-empty">
+    <h2>You have no items in your shopping bag :(</h2>
+  </div>
+</ng-template>

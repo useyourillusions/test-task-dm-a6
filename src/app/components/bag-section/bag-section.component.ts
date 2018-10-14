@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './bag-section.component.html'
 })
 export class BagSectionComponent implements OnInit, OnDestroy {
+
   private unsubscribe = new Subject();
   orderTotal;
 
@@ -24,7 +25,7 @@ export class BagSectionComponent implements OnInit, OnDestroy {
             const productPrice = el['product']['productPrice'] * el['quantity'];
 
             o['subtotal'] += productPrice;
-            o['gst'] += productPrice * 0.05;
+            o['gst'] += Number((productPrice * 0.05).toFixed(2));
             o['total'] = o['subtotal'] + o['gst'];
 
             return o;
@@ -33,8 +34,6 @@ export class BagSectionComponent implements OnInit, OnDestroy {
             subtotal: 0,
             gst: 0
           });
-
-          console.log(this.orderTotal);
       });
   }
 
