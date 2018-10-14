@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-products-section',
-  templateUrl: './products-section.component.html'
+  selector: 'app-catalog-section',
+  templateUrl: './catalog-section.component.html'
 })
-export class ProductsSectionComponent implements OnInit {
+export class CatalogSectionComponent implements OnInit {
 
   currentPage;
   pagesQty;

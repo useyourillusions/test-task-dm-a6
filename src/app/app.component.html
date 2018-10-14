@@ -3,9 +3,12 @@
     <nav class="header__nav">
       <a class="header__nav-link"
          href="#"
-         routerLink="/products"
+         routerLink="products"
          routerLinkActive="_active">Products</a>
-      <a class="header__nav-link" href="bag.html">My bag</a>
+      <a class="header__nav-link"
+         href="#"
+         routerLink="bag"
+         routerLinkActive="_active">My bag ({{bagService.productsQtyObs | async}})</a>
     </nav>
   </div>
 </header>

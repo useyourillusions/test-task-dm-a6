@@ -4,14 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutesModule } from './app.routes';
 import { AppComponent } from './app.component';
-import { ProductsSectionComponent } from './components/products-section/products-section.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
+import { CatalogSectionComponent } from './components/catalog-section/catalog-section.component';
+import { ProductsCatalogComponent } from './components/products-catalog/products-catalog.component';
+import { BagSectionComponent } from './components/bag-section/bag-section.component';
+import { ProductsBagComponent } from './components/products-bag/products-bag.component';
+
+//import { BagService } from './services/bag/bag.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsSectionComponent,
-    ProductsListComponent,
+    CatalogSectionComponent,
+    ProductsCatalogComponent,
+    BagSectionComponent,
+    ProductsBagComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<ul class="l-bag-items" *ngIf="(bagService.productsInBagObs | async).length">
+  <li class="l-bag-items__item" *ngFor="let product of this.bagService.productsInBagObs | async">
+    <picture class="l-bag-items__img-wrapper">
+      <source media="(min-resolution: 144dpi)"
+              [srcset]="product.product['thumbnails']['b3']">
+      <img class="l-bag-items__img"
+           [src]="product.product['thumbnails']['b2']"
+           [title]="product.product['productName']"
+           [alt]="product.product['productName']" />
+    </picture>
+    <div class="l-bag-items__info">
+      <div class="l-bag-items__info-left">
+        <h3 class="l-bag-items__item-title">{{product.product['productName']}}</h3>
+        <p class="l-bag-items__item-param">Color: {{product.product['productColor']}}</p>
+        <strong class="l-bag-items__item-qty">Quantity: {{product.quantity}}</strong>
+      </div>
+      <div class="l-bag-items__info-right">
+        <strong class="l-bag-items__item-price">
+          ${{product.product['productPrice'] * product.quantity}}
+        </strong>
+        <button class="l-bag-items__item-btn"
+                type="button"
+                (click)="bagService.removeProduct(product.product['productId'])">Remove</button>
+      </div>
+    </div>
+  </li>
+</ul>

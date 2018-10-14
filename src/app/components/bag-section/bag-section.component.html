@@ -1,0 +1,23 @@
+<section class="s-bag">
+  <div class="container">
+    <main class="s-bag__main">
+      <app-products-bag></app-products-bag>
+    </main>
+    <aside class="s-bag__aside">
+      <div class="b-total">
+        <h3 class="b-total__main">
+          <span>Order total:</span>
+          <span>${{orderTotal.total}}</span>
+        </h3>
+        <p class="b-total__text">
+          <span>Subtotal:</span>
+          <span>${{orderTotal.subtotal}}</span>
+        </p>
+        <p class="b-total__text">
+          <span>GST(5%):</span>
+          <span>${{orderTotal.gst}}</span>
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
