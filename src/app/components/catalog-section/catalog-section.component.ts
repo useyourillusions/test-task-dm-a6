@@ -37,15 +37,17 @@ export class CatalogSectionComponent implements OnInit {
   ngOnInit() {
     this.http.get('https://api.myjson.com/bins/1g2o7w')
       .subscribe(
-        res => {
-          if (res && res['results']) {
-            this.productsQty = res['results'].length;
-            this.allProducts = res['results'];
-            this.paginate();
-          }
-        },
+        this.processResponse.bind(this),
         err => console.log(err)
       );
+  }
+
+  processResponse(res): void {
+    if (res && res['results']) {
+      this.productsQty = res['results'].length;
+      this.allProducts = res['results'];
+      this.paginate();
+    }
   }
 
   paginate(): void {
@@ -60,7 +62,8 @@ export class CatalogSectionComponent implements OnInit {
         this.pagesList.push(counter * 4 + i + 1);
       }
 
-      this.productsToShow = this.allProducts.slice((this.currentPage - 1) * 6, this.currentPage * 6);
+      this.productsToShow = this.allProducts.slice((this.currentPage - 1) *
+        this.productsPerPage, this.currentPage * this.productsPerPage);
     }
   }
 

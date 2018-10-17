@@ -3,14 +3,14 @@
     <div class="b-product">
       <picture class="b-product__img-wrapper">
         <source media="(min-resolution: 144dpi)"
-                [srcset]="product['thumbnails']['b3']">
+                [srcset]="product.thumbnails['b3']">
         <img class="b-product__img"
-             [src]="product['thumbnails']['b2']"
-             [title]="product['productName']"
-             [alt]="product['productName']" />
+             [src]="product.thumbnails['b2']"
+             [title]="product.productName"
+             [alt]="product.productName" />
       </picture>
-      <h4 class="b-product__title">{{product['productName']}}</h4>
-      <p class="b-product__price">${{product['productPrice']}}</p>
+      <h4 class="b-product__title">{{product.productName}}</h4>
+      <p class="b-product__price">${{product.productPrice}}</p>
     </div>
     <button class="b-product__btn"
             type="button" (click)="addToBag(product)">Add to bag</button>

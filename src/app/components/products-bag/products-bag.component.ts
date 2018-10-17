@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { BagService } from "../../services/bag/bag.service";
+import { Component } from '@angular/core';
+import { BagService } from '../../services/bag/bag.service';
 
 @Component({
   selector: 'app-products-bag',
   templateUrl: './products-bag.component.html'
 })
-export class ProductsBagComponent implements OnInit {
+export class ProductsBagComponent {
+
   constructor(
     protected bagService: BagService
   ) {}
-
-  ngOnInit() {
-  }
 }

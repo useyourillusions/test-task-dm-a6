@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
 export class BagSectionComponent implements OnInit, OnDestroy {
 
   private unsubscribe = new Subject();
-  orderTotal;
+  orderTotalInfo;
 
   constructor(
     private bagService: BagService
@@ -19,23 +19,27 @@ export class BagSectionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.bagService.productsInBagObs
       .pipe(takeUntil(this.unsubscribe))
-      .subscribe(
-        res => {
-          this.orderTotal = res.reduce((o, el) => {
-            const productPrice = el['product']['productPrice'] * el['quantity'];
+      .subscribe(this.reduceProducts.bind(this));
+  }
 
-            o['subtotal'] += productPrice;
-            o['gst'] += (productPrice * 0.05);
-            o['gst'] = Number(o['gst'].toFixed(2));
-            o['total'] = o['subtotal'] + o['gst'];
-
-            return o;
-          }, {
-            total: 0,
-            subtotal: 0,
-            gst: 0
-          });
+  reduceProducts(res) {
+    this.orderTotalInfo = res.reduce(
+      this.calculateTotalPrices.bind(this),
+      {
+        total: 0,
+        subtotal: 0,
+        gst: 0
       });
+  }
+
+  calculateTotalPrices(totalPrices: {total: number, subtotal: number, gst: number}, product) {
+    const productPrice = product.product.productPrice * product.quantity;
+
+    totalPrices.subtotal += productPrice;
+    totalPrices.gst += (productPrice * 0.05);
+    totalPrices.gst = Number(totalPrices.gst.toFixed(2));
+    totalPrices.total = totalPrices.subtotal + totalPrices.gst;
+    return totalPrices;
   }
 
   ngOnDestroy() {

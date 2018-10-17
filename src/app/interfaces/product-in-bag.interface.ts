@@ -1,4 +1,6 @@
+import Product from './product.interface';
+
 export default interface ProductsInBag {
-  product: object,
-  quantity: number
+  product: Product;
+  quantity: number;
 }
