@@ -9,15 +9,13 @@ import { ProductsCatalogComponent } from './components/products-catalog/products
 import { BagSectionComponent } from './components/bag-section/bag-section.component';
 import { ProductsBagComponent } from './components/products-bag/products-bag.component';
 
-//import { BagService } from './services/bag/bag.service';
-
 @NgModule({
   declarations: [
     AppComponent,
     CatalogSectionComponent,
     ProductsCatalogComponent,
     BagSectionComponent,
-    ProductsBagComponent,
+    ProductsBagComponent
   ],
   imports: [
     BrowserModule,
@@ -27,4 +25,5 @@ import { ProductsBagComponent } from './components/products-bag/products-bag.com
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {}

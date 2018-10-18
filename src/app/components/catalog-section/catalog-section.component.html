@@ -1,6 +1,6 @@
-<section class="s-products" *ngIf="productsToShow; else preloader">
+<section class="s-products" *ngIf="productsForCurrentPage; else preloader">
   <div class="container">
-    <app-products-catalog [products]="productsToShow"></app-products-catalog>
+    <app-products-catalog [products]="productsForCurrentPage"></app-products-catalog>
     <div class="b-pagination">
       <a href="#"
          class="b-pagination__link"

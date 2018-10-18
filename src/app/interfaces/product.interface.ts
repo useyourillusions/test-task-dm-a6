@@ -1,5 +1,5 @@
 export default interface Product {
-  availableColors: Array<string>;
+  availableColors: string[];
   productBadgeString: string;
   productColor: string;
   productId: string;

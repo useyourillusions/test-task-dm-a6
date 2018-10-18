@@ -14,8 +14,8 @@ export class CatalogSectionComponent implements OnInit {
   productsQty;
   pagesList = [];
   productsPerPage = 6;
-  productsToShow;
-  allProducts: Array<Product>;
+  productsForCurrentPage;
+  allProducts: Product[];
 
   constructor(
     private http: HttpClient,
@@ -27,7 +27,7 @@ export class CatalogSectionComponent implements OnInit {
         this.currentPage = Math.abs(params['page']) || null;
 
         if (this.currentPage && Number(this.currentPage)) {
-          this.allProducts && this.paginate();
+          this.paginate();
         } else {
           this.router.navigate(['/products'], {queryParams: {page: 1}});
         }
@@ -51,6 +51,10 @@ export class CatalogSectionComponent implements OnInit {
   }
 
   paginate(): void {
+    if (!this.allProducts) {
+      return;
+    }
+
     this.pagesList = [];
     this.pagesQty = Math.ceil(this.productsQty / this.productsPerPage);
 
@@ -58,16 +62,17 @@ export class CatalogSectionComponent implements OnInit {
       this.router.navigate(['/products'], {queryParams: {page: this.pagesQty}});
     } else {
       const counter = Math.floor((this.currentPage - 1) / 4);
+
       for (let i = 0; i < 4; i++) {
         this.pagesList.push(counter * 4 + i + 1);
       }
 
-      this.productsToShow = this.allProducts.slice((this.currentPage - 1) *
-        this.productsPerPage, this.currentPage * this.productsPerPage);
+      this.productsForCurrentPage = this.allProducts
+        .slice((this.currentPage - 1) * this.productsPerPage, this.currentPage * this.productsPerPage);
     }
   }
 
-  changePage(event: Event, page) {
+  changePage(event: Event, page): void {
     event.preventDefault();
     if (page) {
       this.router.navigate(['/products'], {queryParams: {page: page}});

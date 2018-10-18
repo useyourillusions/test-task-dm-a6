@@ -9,16 +9,15 @@ import ProductInBag from '../../interfaces/product-in-bag.interface';
 export class BagService {
 
   productsQty = 0;
-  productsInBag: Array<ProductInBag> = [];
+  productsInBag: ProductInBag[] = [];
 
   private productsQtySource = new BehaviorSubject<number>(this.productsQty);
-  private productsInBagSource = new BehaviorSubject<Array<ProductInBag>>(this.productsInBag);
+  private productsInBagSource = new BehaviorSubject<ProductInBag[]>(this.productsInBag);
   productsQtyObs = this.productsQtySource.asObservable();
   productsInBagObs = this.productsInBagSource.asObservable();
 
-  addProduct(product: Product) {
-    let isAlreadyIn = false,
-      productsInBagClone;
+  addProduct(product: Product): void {
+    let isAlreadyIn = false;
 
     if (this.productsInBag.length) {
       for (let i = 0; i < this.productsInBag.length; i++) {
@@ -37,15 +36,11 @@ export class BagService {
       });
     }
 
-    productsInBagClone = this.productsInBag.slice();
-    this.productsQty++;
-    this.productsInBagSource.next(productsInBagClone);
-    this.productsQtySource.next(this.productsQty);
+    this.sendData(true);
   }
 
-  removeProduct(id) {
-    let idToDelete,
-      productsInBagClone;
+  removeProduct(id): void {
+    let idToDelete;
 
     for (let i = 0; i < this.productsInBag.length; i++) {
       if (this.productsInBag[i].product.productId === id) {
@@ -62,8 +57,13 @@ export class BagService {
       this.productsInBag.splice(idToDelete, 1);
     }
 
-    productsInBagClone = this.productsInBag.slice();
-    this.productsQty--;
+    this.sendData();
+  }
+
+  sendData(isAdding?): void {
+    const productsInBagClone = this.productsInBag.slice();
+
+    isAdding ? this.productsQty++ : this.productsQty--;
     this.productsInBagSource.next(productsInBagClone);
     this.productsQtySource.next(this.productsQty);
   }

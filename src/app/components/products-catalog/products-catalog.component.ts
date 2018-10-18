@@ -13,7 +13,7 @@ export class ProductsCatalogComponent {
     private bagService: BagService
   ) {}
 
-  addToBag(product) {
+  addToBag(product): void {
     const productClone = Object.assign({}, product);
 
     this.bagService.addProduct(productClone);
