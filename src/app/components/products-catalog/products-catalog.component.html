@@ -1,6 +1,6 @@
 <ul class="l-products">
   <li class="l-products__item" *ngFor="let product of products">
-    <div class="b-product">
+    <div class="b-product _edging">
       <picture class="b-product__img-wrapper">
         <source media="(min-resolution: 144dpi)"
                 [srcset]="product.thumbnails['b3']">
@@ -16,3 +16,9 @@
             type="button" (click)="addToBag(product)">Add to bag</button>
   </li>
 </ul>
+
+<div class="b-added-mark _animate" *ngIf="isIconVisible">
+  <svg class="svg-added" version="1.2">
+    <use xlink:href="#svg-added"></use>
+  </svg>
+</div>

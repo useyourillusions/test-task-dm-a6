@@ -99,11 +99,45 @@ li {
 	overflow: hidden;
 }
 
+.wrapper._index {
+	background: #fff;
+}
+
 .container {
 	width: 100%;
 	max-width: 1240px;
 	padding: 0 20px;
 	margin: 0 auto;
+}
+
+._edging {
+	border-radius: 8px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.b-added-mark {
+	width: 75px;
+	height: 75px;
+	padding: 12px;
+	border-radius: 50%;
+	background-color: #fff;
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+}
+
+.b-added-mark > svg {
+	width: 50px;
+	height: 50px;
+}
+
+.b-added-mark._animate {
+	-webkit-animation: disappear 0.3s ease-out forwards;
+	animation: disappear 0.3s ease-out forwards;
 }
 
 .b-pagination {
@@ -157,11 +191,7 @@ li {
 
 .b-product {
 	padding: 8px 8px 15px;
-	border-radius: 8px;
 	text-align: center;
-	background-color: #fff;
-	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .b-product__img {
@@ -213,10 +243,6 @@ li {
 
 .b-total {
 	padding: 20px;
-	border-radius: 8px;
-	background-color: #fff;
-	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .b-total__main {
@@ -329,13 +355,6 @@ li {
 .header__nav-link._active {
 	border-color: #000;
 	pointer-events: none;
-}
-
-.l-bag-items {
-	border-radius: 8px;
-	background-color: #fff;
-	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .l-bag-items__item {
@@ -505,10 +524,6 @@ li {
 	align-items: center;
 	height: 100%;
 	padding: 20px;
-	border-radius: 8px;
-	background-color: #fff;
-	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .s-bag__main-empty > h2 {
@@ -545,6 +560,16 @@ html {
 
 .container {
 	max-width: 740px;
+}
+
+.b-added-mark {
+	width: 70px;
+	height: 70px;
+}
+
+.b-added-mark > svg {
+	width: 45px;
+	height: 45px;
 }
 
 .l-products__item {
@@ -596,6 +621,16 @@ html {
 	padding: 0 15px;
 }
 
+.b-added-mark {
+	width: 65px;
+	height: 65px;
+}
+
+.b-added-mark > svg {
+	width: 40px;
+	height: 40px;
+}
+
 .b-preloader__item {
 	font-size: 70px;
 }
@@ -644,6 +679,26 @@ html {
 
 .s-products {
 	padding-top: 60px;
+}
+
+}
+
+@-webkit-keyframes disappear {
+
+to {
+	opacity: 0;
+	-webkit-transform: translateY(-45px);
+	transform: translateY(-45px);
+}
+
+}
+
+@keyframes disappear {
+
+to {
+	opacity: 0;
+	-webkit-transform: translateY(-45px);
+	transform: translateY(-45px);
 }
 
 }

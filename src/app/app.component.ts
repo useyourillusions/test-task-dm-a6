@@ -8,6 +8,8 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
+  isIndexPage = false;
+
   constructor(
     private router: Router,
     protected bagService: BagService
@@ -17,6 +19,7 @@ export class AppComponent implements OnInit {
     this.router.events
       .subscribe((e) => {
         if (e instanceof NavigationEnd) {
+          this.isIndexPage = e.url === '/';
           window.scrollTo(0, 0);
         }
     });

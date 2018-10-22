@@ -8,6 +8,8 @@ import { BagService } from '../../services/bag/bag.service';
 export class ProductsCatalogComponent {
 
   @Input() products;
+  isIconVisible;
+  animationDuration = 300;
 
   constructor(
     private bagService: BagService
@@ -17,5 +19,14 @@ export class ProductsCatalogComponent {
     const productClone = Object.assign({}, product);
 
     this.bagService.addProduct(productClone);
+    this.animateIconBag();
+  }
+
+  animateIconBag(): void {
+    this.isIconVisible = true;
+
+    setTimeout(() => {
+      this.isIconVisible = false;
+    }, this.animationDuration);
   }
 }
